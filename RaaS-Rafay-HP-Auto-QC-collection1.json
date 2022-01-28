@@ -630,7 +630,7 @@
 						{
 							"key": "payload",
 							"type": "file",
-							"src": "/Users/rambhupal/Downloads/deployment-yaml/nginx-deployment.yaml"
+							"src": "https://raw.githubusercontent.com/rbhupalc/pipeline-test/main/deployment-yaml/nginx-deployment.yaml"
 						}
 					]
 				},
