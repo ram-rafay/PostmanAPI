@@ -17,18 +17,18 @@ pipeline {
       steps {
         script{
                 if ( "${params.Environment}" == "QC-Stage" ) {
-                    evn.app_url = "qc-stage-dev-test.json"
+                    app_url = "qc-stage-dev-test.json"
                     }
                 if ( "${params.Environment}" == "Stage" ) {
-                    env.app_url = "stage-dev-test.json"
+                    app_url = "stage-dev-test.json"
                     }
                 if ( "${params.Environment}" == "Prod" ) {
-                    env.app_url = "console.rafay.dev"
+                    app_url = "console.rafay.dev"
                     }
-                echo "'${env.Environment}'"
+                echo "'${params.Environment}'"
             }
         sh """
-        docker run -i -e console_url="${env.app_url}" hp:test12
+        docker run -i -e console_url="${app_url}" hp:test12
         """
       }
     }
