@@ -1,5 +1,8 @@
 #! /usr/bin/env groovy
 
+pipeline {
+    agent any
+
   parameters {
    extendedChoice name: 'Environment', value: 'QC-Stage,Stage,Prod', defaultValue: 'QC-Stage', description: 'Test Run Environment', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_SINGLE_SELECT', visibleItemCount: 1
    //string(name: 'Username', defaultValue: 'ram@rafay.co', description: 'test user name here')
