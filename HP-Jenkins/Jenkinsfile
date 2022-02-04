@@ -6,8 +6,8 @@ pipeline {
    extendedChoice name: 'Environment', value: 'QC-Stage,Stage,Prod', defaultValue: 'QC-Stage', description: 'Test Run Environment', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_SINGLE_SELECT', visibleItemCount: 1
    string(name: 'username', defaultValue: 'ram@rafay.co', description: 'Input user name here')
    string(name: 'password', defaultValue: 'Rafay!2345', description: 'Input Password here')
-   string(name: 'project_id', defaultValue: 'jkee6qk', description: 'Input your project_id from the opted env Defaultproject id is from Prod' )
-   string(name: 'defaultproject_id', defaultValue: 'jkee6qk', description: 'Input defaultproject_id from the opted env You can even provide project_id here Defaultproject id is from Prod')
+   string(name: 'project_id', defaultValue: 'lk5rnd2', description: 'Input your project_id from the opted env Defaultproject id is from QC' )
+   string(name: 'defaultproject_id', defaultValue: 'lk5rnd2', description: 'Input defaultproject_id from the opted env You can even provide project_id here Defaultproject id is from QC')
    //string(name: 'Username', defaultValue: 'ram@rafay.co', description: 'test user name here')
    }
 
