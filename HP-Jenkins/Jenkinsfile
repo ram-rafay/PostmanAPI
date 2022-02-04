@@ -17,13 +17,13 @@ pipeline {
       steps {
         script{
                 if ( "${params.Environment}" == "QC-Stage" ) {
-                    app_url = "qc-stage-dev-test.json"
+                    evn.app_url = "qc-stage-dev-test.json"
                     }
                 if ( "${params.Environment}" == "Stage" ) {
-                    app_url = "stage-dev-test.json"
+                    env.app_url = "stage-dev-test.json"
                     }
                 if ( "${params.Environment}" == "Prod" ) {
-                    app_url = "console.rafay.dev"
+                    env.app_url = "console.rafay.dev"
                     }
                 echo "'${env.Environment}'"
             }
