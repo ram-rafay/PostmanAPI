@@ -4,6 +4,10 @@ pipeline {
 
   parameters {
    extendedChoice name: 'Environment', value: 'QC-Stage,Stage,Prod', defaultValue: 'QC-Stage', description: 'Test Run Environment', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_SINGLE_SELECT', visibleItemCount: 1
+   string(name: 'username', defaultValue: 'ram@rafay.co', description: 'Input user name here')
+   string(name: 'password', defaultValue: 'Rafay!2345', description: 'Input Password here')
+   string(name: 'project_id', defaultValue: 'jkee6qk', description: 'Input your project_id from the opted env Defaultproject id is from Prod' )
+   string(name: 'defaultproject_id', defaultValue: 'jkee6qk', description: 'Input defaultproject_id from the opted env You can even provide project_id here Defaultproject id is from Prod')
    //string(name: 'Username', defaultValue: 'ram@rafay.co', description: 'test user name here')
    }
 
@@ -25,10 +29,9 @@ pipeline {
                 if ( "${params.Environment}" == "Prod" ) {
                     app_url = "console.rafay.dev"
                     }
-                echo "'${params.Environment}'"
             }
         sh """
-        docker run -i -e console_url="${app_url}" hp:test12
+        docker run -i -e console_url="${app_url}" -e username="${params.username}" -e password="${params.password}" -e project_id="${params.project_id}" -e defaultproject_id="${params.defaultproject_id}" hpconsolidated:test13
         """
       }
     }
