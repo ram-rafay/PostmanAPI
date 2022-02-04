@@ -1,0 +1,33 @@
+#! /usr/bin/env groovy
+
+  parameters {
+   extendedChoice name: 'Environment', value: 'QC-Stage,Stage,Prod', defaultValue: 'QC-Stage', description: 'Test Run Environment', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_SINGLE_SELECT', visibleItemCount: 1
+   //string(name: 'Username', defaultValue: 'ram@rafay.co', description: 'test user name here')
+   }
+
+  // triggers {
+  //      //Scheduled to every 2 hours every day
+  //      cron('0 0,8,16,23 * * 0-6')
+  //  }
+
+  stages {
+    stage("Running Automated Tests") {
+      steps {
+        script{
+                if ( "${params.Environment}" == "QC-Stage" ) {
+                    app_url = "qc-stage-dev-test.json"
+                    }
+                if ( "${params.Environment}" == "Stage" ) {
+                    app_url = "stage-dev-test.json"
+                    }
+                if ( "${params.Environment}" == "Prod" ) {
+                    app_url = "console.rafay.dev"
+                    }
+                echo "'${env.Environment}'"
+            }
+        sh """
+        docker run -i -e console_url="${app_url}" hp:test12
+        """
+      }
+    }
+    }
