@@ -34,7 +34,7 @@ pipeline {
                     }
             }
         sh """
-        docker run -i -e console_url="${app_url}" -e username="${params.username}" -e password="${params.password}" -e project_id="${project_id}" -e defaultproject_id="${project_id}" hpconsolidated:test13
+        docker run -i -e console_url="${app_url}" -e username="${params.username}" -e password="${params.password}" -e project_id="${project_id}" -e defaultproject_id="${project_id}" hpconsolidated:test14
         """
       }
     }
