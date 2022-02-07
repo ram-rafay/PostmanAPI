@@ -6,8 +6,8 @@ pipeline {
    extendedChoice name: 'Environment', value: 'QC-Stage,Stage,Prod', defaultValue: 'QC-Stage', description: 'Test Run Environment', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_SINGLE_SELECT', visibleItemCount: 1
    string(name: 'username', defaultValue: 'ram@rafay.co', description: 'Input user name here')
    string(name: 'password', defaultValue: 'Rafay!2345', description: 'Input Password here')
-   string(name: 'project_id', defaultValue: 'lk5rnd2', description: 'Input your project_id from the opted env Defaultproject id is from QC' )
-   string(name: 'defaultproject_id', defaultValue: 'lk5rnd2', description: 'Input defaultproject_id from the opted env You can even provide project_id here Defaultproject id is from QC')
+   //string(name: 'project_id', defaultValue: 'lk5rnd2', description: 'Input your project_id from the opted env Defaultproject id is from QC' )
+   //string(name: 'defaultproject_id', defaultValue: 'lk5rnd2', description: 'Input defaultproject_id from the opted env You can even provide project_id here Defaultproject id is from QC')
    //string(name: 'Username', defaultValue: 'ram@rafay.co', description: 'test user name here')
    }
 
@@ -22,16 +22,19 @@ pipeline {
         script{
                 if ( "${params.Environment}" == "QC-Stage" ) {
                     app_url = "qc-console.stage.rafay.dev"
+                    project_id = "lk5rnd2"
                     }
                 if ( "${params.Environment}" == "Stage" ) {
                     app_url = "console.stage.rafay.dev"
+                    project_id = "kr930wk"
                     }
                 if ( "${params.Environment}" == "Prod" ) {
                     app_url = "console.rafay.dev"
+                    project_id = "jkee6qk"
                     }
             }
         sh """
-        docker run -i -e console_url="${app_url}" -e username="${params.username}" -e password="${params.password}" -e project_id="${params.project_id}" -e defaultproject_id="${params.defaultproject_id}" hpconsolidated:test13
+        docker run -i -e console_url="${app_url}" -e username="${params.username}" -e password="${params.password}" -e project_id="${project_id}" -e defaultproject_id="${project_id}" hpconsolidated:test13
         """
       }
     }
